@@ -12,7 +12,7 @@ const { token, testGuildId, clientId, mongoPath } = require('./config.json');
  */
 async function start(client) {
     client.commands = new Discord.Collection();
-    client.logger = serverManager.loggers.consoleLogger
+    client.logger = serverManager.logger.consoleLogger
 
     const dbOptions = {
         useNewUrlParser: true,
@@ -77,7 +77,6 @@ async function start(client) {
             let cmd = data[interaction.commandName]
             if(cmd) {
                 cmd.run(interaction, client)
-                console.log(interaction.id)
             }
         }
         if(interaction.isContextMenuCommand()) {

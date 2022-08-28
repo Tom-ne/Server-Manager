@@ -1,4 +1,4 @@
-const guildSchema = require("../../schemas/guild/guildSchema");
+const guildSchema = require("../../../schemas/guild/guildSchema");
 
 module.exports = async function(guildId, logChannelId, verifyChannelId, suggestionChannelId, welcomeChannelId, staffRoleId) {
     await guildSchema.findOneAndUpdate({

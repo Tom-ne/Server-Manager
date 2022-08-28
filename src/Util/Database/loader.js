@@ -1,7 +1,9 @@
-const addGuild = require('./addGuild')
-const editGuild = require('./editGuild')
+const adder = require('./adders/loader')
+const editor = require('./editors/loader')
+const getter = require('./getters/loader')
 
 module.exports = {
-    addGuild,
-    editGuild
+    adder,
+    editor,
+    getter
 }

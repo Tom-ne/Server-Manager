@@ -1,7 +1,9 @@
-const loggers = require('./Util/Logger/loader')
+const logger = require('./Util/Logger/loader')
 const database = require('./Util/Database/loader')
+const discord = require('./Util/Discord/loader')
 
 module.exports = {
-    loggers,
-    database
+    logger,
+    database,
+    discord
 }
