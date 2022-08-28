@@ -1,0 +1,6 @@
+{
+	"token": "bot-token",
+	"testGuildId": "test guild id",
+	"clientId": "client id",
+	"mongoPath": "path to a mongo database"
+}
