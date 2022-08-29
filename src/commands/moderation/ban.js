@@ -19,7 +19,7 @@ module.exports = {
         },
         {
             name: "reason",
-            description: "what is thew reason for the ban?",
+            description: "what is the reason for the ban?",
             type: ApplicationCommandOptionType.String,
             required: true
         },
@@ -35,8 +35,8 @@ module.exports = {
      * @param {Discord.CommandInteraction} interaction
      */
     run: async(interaction, client) => {
-        if(!interaction.member.permissions.has("BAN_MEMBERS")) {
-            return await interaction.reply({ content: "you dont have a permmision to this command", ephemeral: true})
+        if(!interaction.member.permissions.has(Discord.PermissionsBitField.Flags.BanMembers)) {
+            return await interaction.reply({ content: "you dont have a permission to this command", ephemeral: true})
         }
         const user = await interaction.options.get("user");
 
