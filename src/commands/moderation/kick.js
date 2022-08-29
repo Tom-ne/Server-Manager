@@ -39,7 +39,7 @@ module.exports = {
         }
 
         if(user.member.id === interaction.member.id) {
-            return await interaction.reply({ content: "you can't kcik yourself", ephemeral: true })
+            return await interaction.reply({ content: "you can't kick yourself", ephemeral: true })
         }
 
         if(user.member.permissions.has(Discord.PermissionsBitField.Flags.Administrator) || !user.member.manageable) {
