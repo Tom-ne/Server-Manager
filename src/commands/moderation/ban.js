@@ -6,7 +6,6 @@ const {
     ApplicationCommandOptionType
 } = require('discord.js');
 const Discord = require('discord.js');
-const userSchema = require('../../schemas/moderation/userSchema');
 
 module.exports = {
     name: "ban",
@@ -58,33 +57,12 @@ module.exports = {
 
         try {
             user.member.ban((ms(time.value)), reason) + 
-            interaction.reply({content: 'המשתמש קיבל באן בהצלחה!'})
-            var userData = await userSchema.findOne({
-                guildId: interaction.guild.id,
-                userId: user.member.id
-            })
-
-            if(!userData) {
-                userData = await new userSchema({
-                    guildId: interaction.guild.id,
-                    userId: user.member.id,
-                    warns: 0,
-                    mutes: 0,
-                    kicks: 0,
-                    bans: 0,
-                    isCurrently: false
-                }).save();
-            }
-
-            await userData.updateOne(
-                {
-                    bans: userData.bans + 1
-                },
-                { upsert: true }
-            )
+            interaction.reply({content: 'the user has been banned!'})
+            
+            
         } catch {
             console.error()
-            return await interaction.reply({ content: "הייתה בעיה ולא יכולתי לתת באן.", ephemeral: true })
+            return await interaction.reply({ content: "there was a problem and i could't ban this member", ephemeral: true })
         }
     }
 }
