@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const getGuild = require('./getGuild')
+const getGuild = require('./getters/getGuild')
 /**
  * @param {String} memberId 
  * @param {String} guildId 
