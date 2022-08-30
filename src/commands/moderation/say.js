@@ -32,7 +32,7 @@ module.exports = {
      */
         run: async(interaction, client) => {
             if (!interaction.member.permissions.has(Discord.PermissionsBitField.Flags.Administrator)) {
-                interaction.reply({ content: '**you dont have a permission to this command**', ephemeral: true })
+                interaction.reply({ content: "**you don't have a permission to this command**", ephemeral: true })
             }
 
             var channel = await interaction.options.getChannel("room")
