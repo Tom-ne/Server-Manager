@@ -1,6 +1,7 @@
 const {
-    MessageActionRow,
-    MessageButton,
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
     EmbedBuilder,
     ApplicationCommandOptionType
 } = require('discord.js');
