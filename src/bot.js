@@ -86,6 +86,7 @@ async function start(client) {
 
     client.on("ready", async() => {
         await client.guilds.cache.get(testGuildId).commands.set(commands);
+        await client.application.commands.set(commands);
     });
 
     client.login(token)
