@@ -5,5 +5,5 @@ const getter = require('./getters/loader')
 module.exports = {
     adder,
     editor,
-    getter
+    getter,
 }

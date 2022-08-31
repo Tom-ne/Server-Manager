@@ -9,7 +9,7 @@ module.exports = {
      * @param {Discord.Client} client 
      */
     async execute(message, client) {
-        if(!message.guild) return;
+        if (!message.guild) return;
 
         const fetchedLogs = await message.guild.fetchAuditLogs({
             limit: 1,
@@ -18,24 +18,8 @@ module.exports = {
 
         const deletionLogs = fetchedLogs.entries.first();
 
-        if(!deletionLogs) return;
-
-        const { executor, target } = deletionLogs;
-
         var embed;
-
-        if(target.id === message.author.id) {
-            embed = new Discord.EmbedBuilder()
-                .setTitle("Message Deleted")
-                .setDescription(`A message by <@${message.author.id}> was deleted by <@${executor.id}>`)
-                .addFields(
-                    { name: "content", value: message.content },
-                    { name: "channel", value: `<#${message.channel.id}>` }
-                )
-                .setColor("Random")
-                .setFooter({ text: "Logs system", iconURL: client.user.avatarURL() })
-                .setTimestamp()
-        } else {
+        if (!deletionLogs) {
             embed = new Discord.EmbedBuilder()
                 .setTitle("Message Deleted")
                 .setDescription(`A message by <@${message.author.id}> was deleted`)
@@ -46,6 +30,31 @@ module.exports = {
                 .setColor("Random")
                 .setFooter({ text: "Logs system", iconURL: client.user.avatarURL() })
                 .setTimestamp()
+        } else {
+            const { executor, target } = deletionLogs;
+            if (target.id === message.author.id) {
+                embed = new Discord.EmbedBuilder()
+                    .setTitle("Message Deleted")
+                    .setDescription(`A message by <@${message.author.id}> was deleted by <@${executor.id}>`)
+                    .addFields(
+                        { name: "content", value: message.content },
+                        { name: "channel", value: `<#${message.channel.id}>` }
+                    )
+                    .setColor("Random")
+                    .setFooter({ text: "Logs system", iconURL: client.user.avatarURL() })
+                    .setTimestamp()
+            } else {
+                embed = new Discord.EmbedBuilder()
+                    .setTitle("Message Deleted")
+                    .setDescription(`A message by <@${message.author.id}> was deleted`)
+                    .addFields(
+                        { name: "content", value: message.content },
+                        { name: "channel", value: `<#${message.channel.id}>` }
+                    )
+                    .setColor("Random")
+                    .setFooter({ text: "Logs system", iconURL: client.user.avatarURL() })
+                    .setTimestamp()
+            }
         }
 
         ServerManager.logger.discordLogger(message.guild.id, embed, client);

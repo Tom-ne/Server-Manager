@@ -16,7 +16,7 @@ module.exports = {
      * @param {Discord.CommandInteraction} interaction
      */
     run: async(interaction ,client) => {
-        const guildData = await ServerManager.database.getGuild(interaction.guild.id);
+        const guildData = await ServerManager.database.getter.getGuild(interaction.guild.id);
 
         if(!guildData.staffRoleId) {
             return interaction.reply({ content: "Staff role is not defined, please config the bot using the config command", ephemeral: true });
@@ -30,7 +30,7 @@ module.exports = {
             return interaction.reply({ content: "You need to be in a voice to use this command!", ephemeral: true })
         }
 
-        const voiceChannel = await ServerManager.discord.getChannel(interaction.member.voice.channel.id, interaction.guild.id, client);
+        const voiceChannel = await ServerManager.discord.getters.getChannel(interaction.member.voice.channel.id, interaction.guild.id, client);
 
         voiceChannel.members.forEach(member => {
             if(!member.roles.cache.has(guildData.staffRoleId)) {
