@@ -1,4 +1,3 @@
-const { ActionRowBuilder } = require('@discordjs/builders');
 const {
     EmbedBuilder,
     ButtonBuilder,
@@ -7,6 +6,7 @@ const {
     ChannelType,
     TextInputStyle,
     ThreadAutoArchiveDuration,
+    ActionRowBuilder
 } = require('discord.js');
 const Discord = require('discord.js');
 const ms = require('ms');
