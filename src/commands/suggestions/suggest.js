@@ -72,6 +72,7 @@ module.exports = {
                 channel.lastMessage.react('⬆') 
                 channel.lastMessage.react('⬇') 
                 none ? channel.setAppliedTags([ none.id ]) : ""
+				submitted.editReply({ content: `suggestion channel: <#${channel.id}>`  })
             })
             .catch(error => ServerManager.logger.consoleLogger.log(error, "err"))
         }
