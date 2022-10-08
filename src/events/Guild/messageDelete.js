@@ -11,10 +11,7 @@ module.exports = {
     async execute(message, client) {
         if (!message.guild) return;
 
-        const fetchedLogs = await message.guild.fetchAuditLogs({
-            limit: 1,
-            type: AuditLogEvent.MessageDelete
-        })
+        const fetchedLogs = await ServerManager.discord.getters.getAuditLogs(1, AuditLogEvent.MessageDelete)
 
         const deletionLogs = fetchedLogs.entries.first();
 
