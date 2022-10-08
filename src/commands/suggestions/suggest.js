@@ -67,11 +67,11 @@ module.exports = {
                     embeds: [embed],
                 },
                 reason: 'New suggestion',
-                appliedTags: [ none.id ]
             })
             .then(channel => {
                 channel.lastMessage.react('⬆') 
                 channel.lastMessage.react('⬇') 
+                none ? channel.setAppliedTags([ none.id ]) : ""
             })
             .catch(error => ServerManager.logger.consoleLogger.log(error, "err"))
         }
